@@ -7,9 +7,9 @@ int main()
 	vector<double> solution;
 	double a, b, c;
 
-	cin >> a;
-	cin >> b;
-	cin >> c;
+	cout << "a: "; cin >> a;
+	cout << "b: "; cin >> b;
+	cout << "c: "; cin >> c;
 
 	solution = equations_quadratic::solve_equation(a, b, c);
 	if (solution.empty()) {

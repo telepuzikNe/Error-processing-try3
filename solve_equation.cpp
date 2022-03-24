@@ -17,6 +17,8 @@ namespace equations_quadratic {
 		double root_1 = (-b + sqrt(discriminant)) / (2 * a),
 			   root_2 = (-b - sqrt(discriminant)) / (2 * a);
 
+		if (abs(discriminant) < 0.001)
+			return vector<double>({ root_1 });
 		return vector<double>({ root_1, root_2 });
 	}
 }
