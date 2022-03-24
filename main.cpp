@@ -1,21 +1,6 @@
 #include "stdafx.h"
-#include <iostream>
-#include <vector>
+#include "solve_equation.h"
 using namespace std;
-
-double solve_discriminant(double a, double b, double c) {
-	return b * b - 4 * a * c;
-}
-
-vector<double> solve_equation(double a, double b, double c) {
-
-	double discriminant = solve_discriminant(a, b, c);
-
-	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
-		   root_2 = (-b - sqrt(discriminant)) / (2 * a);
-
-	return vector<double>({ root_1, root_2 });
-}
 
 int main()
 {
@@ -26,7 +11,11 @@ int main()
 	cin >> b;
 	cin >> c;
 
-	solution = solve_equation(a, b, c);
+	solution = equations_quadratic::solve_equation(a, b, c);
+	if (solution.empty()) {
+		cout << "Discriminant is less than zero\nThe equation has no valid solutions\n";
+		return 0;
+	}
 
 	cout << "solution: ";
 	for (double root : solution) {

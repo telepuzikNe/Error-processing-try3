@@ -1,0 +1,12 @@
+#pragma once
+#include <iostream>
+#include <vector>
+using namespace std;
+
+namespace equations_quadratic {
+	vector<double> solve_equation(double a, double b, double c);
+	// возвращает список корней уравнения a*(x^2) + b*x + c = 0
+
+	double solve_discriminant(double a, double b, double c);
+	// вычисление дискриминанта уравнения a*(x^2) + b*x + c = 0	
+}
