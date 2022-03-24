@@ -8,12 +8,18 @@ namespace equations_quadratic {
 		return "Coefficients A and B equal zero\nThe equation loses all meaning\n";
 	}
 
+	const char* AnyRootException::what() const throw () {
+		return "The root of the quadratic equation belongs to the set from minus infinity to plus infinity";
+	}
+
 	double solve_discriminant(double a, double b, double c) {
 		return b * b - 4 * a * c;
 	}
 
 	double solve_linear(double b, double c) {
 		if (abs(b) < 0.001) {
+			if (abs(c) < 0.001)
+				throw AnyRootException();
 			throw NoEquationException();
 		}
 		return -c / b;

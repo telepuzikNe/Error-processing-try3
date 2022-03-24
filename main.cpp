@@ -22,7 +22,11 @@ int main()
 		cerr << e.what() << endl;
 		return -1;
 	}
-	
+	catch (equations_quadratic::AnyRootException e) {
+		cerr << e.what() << endl;
+		return -1;
+	}
+
 	cout << "solution: ";
 	for (double root : solution) {
 		cout << root << "  ";
