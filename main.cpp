@@ -9,15 +9,19 @@ double solve_discriminant(double a, double b, double c) {
 
 double solve_linear(double b, double c) {
 	if (abs(b) < 0.001) {
+		if (abs(c) < 0.001)
+			return -4;
 		return -3;
 	}
 	return -c / b;
 }
 
 int solve_equation(double a, double b, double c, vector<double> &solution) {
-	if (abs(a) < 0.001) {	
+	if (abs(a) < 0.001) {
 		if (solve_linear(b, c) == -3)
 			return -3;
+		else if (solve_linear(b, c) == -4)
+			return -4;
 		solution.push_back(solve_linear(b, c));
 		return -2;
 	}
@@ -27,7 +31,7 @@ int solve_equation(double a, double b, double c, vector<double> &solution) {
 		return -1;
 
 	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
-		   root_2 = (-b - sqrt(discriminant)) / (2 * a);
+		root_2 = (-b - sqrt(discriminant)) / (2 * a);
 
 	if (abs(discriminant) < 0.001) {
 		solution.push_back(root_1);
@@ -62,9 +66,12 @@ int main()
 		cout << "Discriminant is less than zero\nThe equation has no valid solutions\n";
 	}
 	else if (rezult == -2) {
-		cout << "solution: " << solution[0] << endl;		
+		cout << "solution: " << solution[0] << endl;
 	}
 	else if (rezult == -3) {
 		cout << "Coefficients A and B equal zero\nThe equation loses all meaning\n";
+	}
+	else if (rezult == -4) {
+		cout << "The root of the quadratic equation belongs to the set from minus infinity to plus infinity\n";
 	}
 }
