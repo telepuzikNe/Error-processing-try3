@@ -10,12 +10,19 @@ int main()
 	cout << "a: "; cin >> a;
 	cout << "b: "; cin >> b;
 	cout << "c: "; cin >> c;
-
-	if (solution.empty()) {
-		cout << "Discriminant is less than zero\nThe equation has no valid solutions\n";
-		return 0;
+	
+	try {
+		solution = equations_quadratic::solve_equation(a, b, c);
+		if (solution.empty()) {
+			cout << "Discriminant is less than zero\nThe equation has no valid solutions\n";
+			return 0;
+		}
 	}
-
+	catch (equations_quadratic::NoEquationException e) {
+		cerr << e.what() << endl;
+		return -1;
+	}
+	
 	cout << "solution: ";
 	for (double root : solution) {
 		cout << root << "  ";

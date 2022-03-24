@@ -4,11 +4,18 @@ using namespace std;
 
 namespace equations_quadratic {
 
+	const char* NoEquationException::what() const throw () {
+		return "Coefficients A and B equal zero\nThe equation loses all meaning\n";
+	}
+
 	double solve_discriminant(double a, double b, double c) {
 		return b * b - 4 * a * c;
 	}
 
 	double solve_linear(double b, double c) {
+		if (abs(b) < 0.001) {
+			throw NoEquationException();
+		}
 		return -c / b;
 	}
 

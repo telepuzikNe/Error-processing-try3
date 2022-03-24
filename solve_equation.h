@@ -5,6 +5,11 @@ using namespace std;
 
 namespace equations_quadratic {
 
+	class NoEquationException : public exception {
+	public:
+		const char* what() const throw ();
+	};
+
 	vector<double> solve_equation(double a, double b, double c);
 	// возвращает список корней уравнения a*(x^2) + b*x + c = 0
 
