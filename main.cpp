@@ -7,14 +7,19 @@ double solve_discriminant(double a, double b, double c) {
 	return b * b - 4 * a * c;
 }
 
-vector<double> solve_equation(double a, double b, double c) {
+int solve_equation(double a, double b, double c, vector<double> &solution) {
 
 	double discriminant = solve_discriminant(a, b, c);
+	if (discriminant <= -0.001)
+		return -1;
 
 	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
 		   root_2 = (-b - sqrt(discriminant)) / (2 * a);
 
-	return vector<double>({ root_1, root_2 });
+	solution.push_back(root_1);
+	solution.push_back(root_2);
+
+	return 1;
 }
 
 int main()
@@ -26,11 +31,16 @@ int main()
 	cin >> b;
 	cin >> c;
 
-	solution = solve_equation(a, b, c);
+	int rezult = solve_equation(a, b, c, solution);
 
-	cout << "solution: ";
-	for (double root : solution) {
-		cout << root << "  ";
+	if (rezult == 1) {
+		cout << "solution: ";
+		for (double root : solution) {
+			cout << root << "  ";
+		}
+		cout << endl;
 	}
-	cout << endl;
+	else if (rezult == -1) {
+		cout << "Program terminated with an error\nDiscriminant is less than zero\n";
+	}
 }
