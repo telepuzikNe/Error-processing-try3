@@ -8,11 +8,16 @@ double solve_discriminant(double a, double b, double c) {
 }
 
 double solve_linear(double b, double c) {
+	if (abs(b) < 0.001) {
+		return -3;
+	}
 	return -c / b;
 }
 
 int solve_equation(double a, double b, double c, vector<double> &solution) {
-	if (abs(a) < 0.001) {
+	if (abs(a) < 0.001) {	
+		if (solve_linear(b, c) == -3)
+			return -3;
 		solution.push_back(solve_linear(b, c));
 		return -2;
 	}
@@ -54,10 +59,12 @@ int main()
 		cout << endl;
 	}
 	else if (rezult == -1) {
-		cout << "Program terminated with an error\nDiscriminant is less than zero\n";
+		cout << "Discriminant is less than zero\nThe equation has no valid solutions\n";
 	}
 	else if (rezult == -2) {
-		cout << "solution: " << solution[0];
-		cout << endl;
-	}	
+		cout << "solution: " << solution[0] << endl;		
+	}
+	else if (rezult == -3) {
+		cout << "Coefficients A and B equal zero\nThe equation loses all meaning\n";
+	}
 }
