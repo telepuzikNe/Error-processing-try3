@@ -16,6 +16,11 @@ int solve_equation(double a, double b, double c, vector<double> &solution) {
 	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
 		   root_2 = (-b - sqrt(discriminant)) / (2 * a);
 
+	if (abs(discriminant) < 0.001) {
+		solution.push_back(root_1);
+		return -2;
+	}
+
 	solution.push_back(root_1);
 	solution.push_back(root_2);
 
@@ -42,5 +47,9 @@ int main()
 	}
 	else if (rezult == -1) {
 		cout << "Program terminated with an error\nDiscriminant is less than zero\n";
+	}
+	else if (rezult == -2) {
+		cout << "solution: " << solution[0];
+		cout << endl;
 	}
 }
