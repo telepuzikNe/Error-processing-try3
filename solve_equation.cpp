@@ -8,7 +8,13 @@ namespace equations_quadratic {
 		return b * b - 4 * a * c;
 	}
 
+	double solve_linear(double b, double c) {
+		return -c / b;
+	}
+
 	vector<double> solve_equation(double a, double b, double c) {
+		if (abs(a) < 0.001)
+			return vector<double>({ solve_linear(b, c) });
 
 		double discriminant = solve_discriminant(a, b, c);
 		if (discriminant <= -0.001)

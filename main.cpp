@@ -11,7 +11,6 @@ int main()
 	cout << "b: "; cin >> b;
 	cout << "c: "; cin >> c;
 
-	solution = equations_quadratic::solve_equation(a, b, c);
 	if (solution.empty()) {
 		cout << "Discriminant is less than zero\nThe equation has no valid solutions\n";
 		return 0;
