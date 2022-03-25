@@ -49,10 +49,15 @@ int main()
 	vector<double> solution;
 	double a, b, c;
 
-	cin >> a;
-	cin >> b;
-	cin >> c;
-
+	cout << "Enter coeffitiens a, b, c\n";
+	while ((!(cin >> a)) || (!(cin >> b)) || (!(cin >> c)))
+	{
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Wrong input. Enter again." << endl;
+		cout << "Enter coeffitiens a, b, c\n";
+	}
+	
 	int rezult = solve_equation(a, b, c, solution);
 
 	if (rezult == 1) {
