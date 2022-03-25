@@ -6,10 +6,14 @@ int main()
 {
 	vector<double> solution;
 	double a, b, c;
-
-	cout << "a: "; cin >> a;
-	cout << "b: "; cin >> b;
-	cout << "c: "; cin >> c;
+	cout << "Enter coefficients a,b,c\n";
+	while ((!(cin >> a)) || (!(cin >> b)) || (!(cin >> c)))
+	{
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Input error. Enter again." << endl;
+		cout << "Enter coefficients\n";
+	}
 	
 	try {
 		solution = equations_quadratic::solve_equation(a, b, c);
