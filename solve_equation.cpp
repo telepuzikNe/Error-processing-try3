@@ -12,7 +12,7 @@ namespace equations_quadratic {
 		return "The root of the quadratic equation belongs to the set from minus infinity to plus infinity";
 	}
 
-	double solve_discriminant(double a, double b, double c) {
+	double get_discriminant(double a, double b, double c) {
 		return b * b - 4 * a * c;
 	}
 
@@ -35,7 +35,7 @@ namespace equations_quadratic {
 		if (equal(a,0,0.0001))
 			return vector<double>({ solve_linear(b, c) });
 
-		double discriminant = solve_discriminant(a, b, c);
+		double discriminant = get_discriminant(a, b, c);
 		if (discriminant <= -0.0001)
 			return vector<double>();
 		
