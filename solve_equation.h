@@ -23,4 +23,7 @@ namespace equations_quadratic {
 
 	double solve_discriminant(double a, double b, double c);
 	// вычисление дискриминанта уравнения a*(x^2) + b*x + c = 0	
+
+	bool equal(double num1, double num2, double epsilon);
+	// сравнение двух чисел с заданной точностью
 }
