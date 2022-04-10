@@ -7,9 +7,15 @@ double solve_discriminant(double a, double b, double c) {
 	return b * b - 4 * a * c;
 }
 
+bool equal(double num1, double num2, double epsilon) {
+	if (abs(num1 - num2) <= epsilon)
+		return 1;
+	return 0;
+}
+
 double solve_linear(double b, double c) {
-	if (abs(b) < 0.001) {
-		if (abs(c) < 0.001)
+	if (equal(b,0,0.0001)) {
+		if (equal(c, 0, 0.0001))
 			return -4;
 		return -3;
 	}
@@ -17,7 +23,7 @@ double solve_linear(double b, double c) {
 }
 
 int solve_equation(double a, double b, double c, vector<double> &solution) {
-	if (abs(a) < 0.001) {
+	if (equal(a, 0, 0.0001)) {
 		if (solve_linear(b, c) == -3)
 			return -3;
 		else if (solve_linear(b, c) == -4)
@@ -33,7 +39,7 @@ int solve_equation(double a, double b, double c, vector<double> &solution) {
 	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
 		root_2 = (-b - sqrt(discriminant)) / (2 * a);
 
-	if (abs(discriminant) < 0.001) {
+	if (equal(discriminant, 0, 0.0001)) {
 		solution.push_back(root_1);
 		return -2;
 	}
