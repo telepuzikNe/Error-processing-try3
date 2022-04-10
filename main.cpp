@@ -3,13 +3,13 @@
 #include <vector>
 using namespace std;
 
-double solve_discriminant(double a, double b, double c) {
+double get_discriminant(double a, double b, double c) {
 	return b * b - 4 * a * c;
 }
 
 vector<double> solve_equation(double a, double b, double c) {
 
-	double discriminant = solve_discriminant(a, b, c);
+	double discriminant = get_discriminant(a, b, c);
 
 	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
 		   root_2 = (-b - sqrt(discriminant)) / (2 * a);
