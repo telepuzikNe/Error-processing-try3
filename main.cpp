@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-double solve_discriminant(double a, double b, double c) {
+double get_discriminant(double a, double b, double c) {
 	return b * b - 4 * a * c;
 }
 
@@ -32,7 +32,7 @@ int solve_equation(double a, double b, double c, vector<double> &solution) {
 		return -2;
 	}
 
-	double discriminant = solve_discriminant(a, b, c);
+	double discriminant = get_discriminant(a, b, c);
 	if (discriminant <= -0.001)
 		return -1;
 
