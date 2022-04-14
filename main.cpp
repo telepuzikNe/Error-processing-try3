@@ -37,7 +37,11 @@ int solve_equation(double a, double b, double c, vector<double> &solution) {
 		return -1;
 
 	double root_1 = (-b + sqrt(discriminant)) / (2 * a),
-		root_2 = (-b - sqrt(discriminant)) / (2 * a);
+		   root_2 = (-b - sqrt(discriminant)) / (2 * a);
+
+	if ((!isfinite(root_1)) || (!isfinite(root_2))) {
+		return -5;
+	}
 
 	if (equal(discriminant, 0, 0.0001)) {
 		solution.push_back(root_1);
@@ -84,5 +88,8 @@ int main()
 	}
 	else if (rezult == -4) {
 		cout << "The root of the quadratic equation belongs to the set from minus infinity to plus infinity\n";
+	}
+	else if (rezult == -5) {
+		cout << "Some root is outside of double type\n";
 	}
 }
