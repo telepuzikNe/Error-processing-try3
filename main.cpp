@@ -30,6 +30,10 @@ int main()
 		cerr << e.what() << endl;
 		return -1;
 	}
+	catch (equations_quadratic::OutOfDoubleException e) {
+		cerr << e.what() << endl;
+		return -1;
+	}
 
 	cout << "solution: ";
 	for (double root : solution) {

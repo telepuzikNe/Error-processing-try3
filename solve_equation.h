@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 namespace equations_quadratic {
@@ -11,6 +12,11 @@ namespace equations_quadratic {
 	};
 
 	class AnyRootException : public exception {
+	public:
+		const char* what() const throw ();
+	};
+
+	class OutOfDoubleException : public exception {
 	public:
 		const char* what() const throw ();
 	};

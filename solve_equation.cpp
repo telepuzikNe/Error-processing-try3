@@ -11,6 +11,9 @@ namespace equations_quadratic {
 	const char* AnyRootException::what() const throw () {
 		return "The root of the quadratic equation belongs to the set from minus infinity to plus infinity";
 	}
+	const char* OutOfDoubleException::what() const throw () {
+		return "Some root is outside of double type";
+	}
 
 	double get_discriminant(double a, double b, double c) {
 		return b * b - 4 * a * c;
@@ -41,6 +44,12 @@ namespace equations_quadratic {
 		
 		double root_1 = (-b + sqrt(discriminant)) / (2 * a),
 			   root_2 = (-b - sqrt(discriminant)) / (2 * a);
+
+		if ((!isfinite(root_1)) || (!isfinite(root_2))) {
+			//cout << isfinite(root_1);
+			//cout << isfinite(root_2);
+			throw OutOfDoubleException();
+		}
 
 		if (equal(discriminant, 0, 0.0001))
 			return vector<double>({ root_1 });
